@@ -77,32 +77,18 @@ def solution():
 # Donne la solution du labyrinthe ici!    
     bas()
     droite()
-    droite()
-    droite()
-    droite()
-    bas()
-    bas()
-    bas()
-    bas()
+    haut()
     gauche()
-    gauche()
-    gauche()
-    bas()
-    bas()
-    droite()
-    droite()
-    droite()
-    droite()
-    droite()
-    droite()
+
 
 
 def solution2():
     bas()
     for i in range(4):
         droite()
-    for i in range(3):
+    for i in range(2):
         bas()
+
 
 def main():
 
