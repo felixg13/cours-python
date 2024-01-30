@@ -116,7 +116,7 @@ def main():
             time.sleep(1)
 
             if run:
-                solution()
+                solutionAI()
                 run = False
                 quit()
         

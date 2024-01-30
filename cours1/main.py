@@ -77,8 +77,8 @@ def solution():
 # Donne la solution du labyrinthe ici!    
     bas()
     droite()
-    haut()
-    gauche()
+    droite()
+    droite()
 
 
 
