@@ -56,8 +56,6 @@ def next(win):
     updateview(win)
     time.sleep(1)
     
-#TODO: écrire la logique du AI
-def nextMove():
 
     
 
@@ -94,9 +92,22 @@ def solution2():
         bas()
         
 #TODO: utilier une boucle while
+row = 0
+col = 0
 def solutionAI():
+    while row == 7 and col == 7:
+        if col + 1 < 8 and board[row][col + 1] == 0:
+            droite()
+        elif col - 1 > 0 and board[row][col - 1] == 0:
+            gauche()
+        elif row + 1 < 8 and board[row + 1][col] == 0:
+            bas()
+        elif row - 1 > 0 and board[row - 1][col] == 0:
+            haut()
 
-
+        
+    
+    
 
 def main():
 
