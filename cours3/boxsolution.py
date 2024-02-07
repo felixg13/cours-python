@@ -1,3 +1,9 @@
+#Créateur: Felix Gagnon
+#Niveau: Intermédaire
+#Objectif: Créer un jeu rapide de cookie clicker, c'est une bonne introduction à pygame pour découvrir le event loop
+#amélioration possible: 
+#1)remplace le cercle par un coookie pixel art réaliser sur https://www.pixilart.com/draw
+#2)limiter l'esace de cliquage à l'air du cercle (géométrie avancée + pythagore)
 import pygame
 
 WIDTH, HEIGHT = 800, 800
