@@ -27,7 +27,7 @@ def main():
     while run:
 
         WIN.fill(BLACK)
-        pygame.draw.circle(WIN, BLUE, (400, 400), PIECE_RADIUS)
+        pygame.draw.rect(WIN, BLUE)
         text = font.render("Score: " + str(score), True, YELLOW)
         WIN.blit(text, (20, 20))
         pygame.display.flip()
