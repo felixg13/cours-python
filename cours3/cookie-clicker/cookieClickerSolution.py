@@ -23,9 +23,10 @@ FPS = 30
 pygame.init()
 pygame.display.set_caption("Cookie Clicker")
 #cookie = pygame.image.load("cookie.png")
+
+
+
 cookie = pygame.transform.scale(pygame.image.load("cookie.png"),(200,200))
-
-
 def main():
     font = pygame.font.Font(None, 36)
     score = 0
@@ -36,12 +37,12 @@ def main():
     while run:
 
         WIN.fill(BLACK)
-        #pygame.draw.rect(WIN, BLUE)
         text = font.render("Score: " + str(score), True, YELLOW)
-        WIN.blit(cookie, (300,300))
+
+
         WIN.blit(text, (20, 20))
+        WIN.blit(cookie, (300,300))
         pygame.display.flip()
-        clock.tick(FPS)
 
         for event in pygame.event.get():
 
