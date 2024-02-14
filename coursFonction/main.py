@@ -3,11 +3,9 @@ def multiplie3(nombre):
     return
 
 
-#TODO retourne l'indice de pomme dans la liste
-def trouvePomme(fruits):
-    for i in range(len(fruits)):
-        pass
-    return
+#TODO compte les pommes
+def compteLesPommes(fruits):
+    return 
 
 #TODO modifie la liste pour avoir des poires à la place des pommes
 def remplacePommeParPoire(liste):
@@ -19,7 +17,7 @@ def remplacePommeParPoire(liste):
 print(multiplie3(5))
 
 liste = [ "cerise", "olive", 'pomme', "tomate", "pomme"]
-print(trouvePomme(liste))
+print(compteLesPommes(liste))
 
 
 remplacePommeParPoire(liste)
