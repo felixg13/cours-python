@@ -24,7 +24,7 @@ board = [[2,1,1,1,1,1,1,1],
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 BLUE = (16, 177, 226)
-YELLOW = (255,255,0)
+JAUNE = (255,255,0)
 
 FPS = 30
 
@@ -67,7 +67,7 @@ def updateview(win):
             if board[row][col] == 1: #and abs(col - x) <= 1 and abs(row - y) <= 1:
                 pygame.draw.rect(win, WHITE, pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE-1, SQUARE_SIZE-1))
             if board[row][col] == 2:
-                pygame.draw.rect(win, YELLOW, pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+                pygame.draw.rect(win, JAUNE, pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
     pygame.draw.circle(win, BLUE, (x * SQUARE_SIZE + SQUARE_SIZE/2, y * SQUARE_SIZE + SQUARE_SIZE/2), PIECE_RADIUS)
     pygame.display.flip()
 
@@ -123,7 +123,7 @@ def main():
             time.sleep(1)
 
             if run:
-                solution2()
+                solution()
                 run = False
                 quit()
         

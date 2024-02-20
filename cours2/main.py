@@ -1,8 +1,8 @@
 import pygame
 import time
-
-WIDTH, HEIGHT = 800, 800
-SQUARE_SIZE = 100
+WRONG_NUMBER = 3
+WIDTH, HEIGHT = 600, 600
+SQUARE_SIZE = 75
 PIECE_RADIUS = SQUARE_SIZE//2 - 10
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -25,29 +25,28 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 BLUE = (16, 177, 226)
 YELLOW = (255,255,0)
-
-FPS = 30
+GRAY = (128, 128, 128)
 
 pygame.init()
 pygame.display.set_caption("Labyrinthe")
 
 
-def haut():
+def up():
     global y, WIN
     y -= 1
     next(WIN)
 
-def bas():
+def down():
     global y, WIN
     y += 1
     next(WIN)
 
-def gauche():
+def left():
     global x, WIN
     x -= 1
     next(WIN)
 
-def droite():
+def right():
     global x, WIN
     x += 1
     next(WIN)
@@ -57,55 +56,44 @@ def next(win):
     time.sleep(1)
     
 
-    
-
-
-
 def updateview(win):
     win.fill(BLACK)
     for row in range(len(board)):
         for col in range(len(board)):
-            if board[row][col] == 0:
-                pygame.draw.rect(win, BLACK, pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
-            if board[row][col] == 1: #and abs(col - x) <= 1 and abs(row - y) <= 1:
-                pygame.draw.rect(win, WHITE, pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE-1, SQUARE_SIZE-1))
-            if board[row][col] == 2:
-                pygame.draw.rect(win, YELLOW, pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+            if abs(col - x) <= 1 and abs(row - y) <= 1:
+                if board[row][col] == 0:
+                    pygame.draw.rect(win, GRAY, pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+                if board[row][col] == 1:
+                    pygame.draw.rect(win, WHITE, pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE-1, SQUARE_SIZE-1))
+                if board[row][col] == 2:
+                    pygame.draw.rect(win, YELLOW, pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
     pygame.draw.circle(win, BLUE, (x * SQUARE_SIZE + SQUARE_SIZE/2, y * SQUARE_SIZE + SQUARE_SIZE/2), PIECE_RADIUS)
     pygame.display.flip()
 
 
-    
-def solution():   
-    bas()
-    droite()
-    droite()
-    droite()
+#TODO SOLVE THE MAZE HERE USING: up(), down(), left(), right()    
+def solution1():
+    down()   
+    right()
 
-
-
+#Congrats on completing Solution 1
+#Lets use loops to solve the problem more efficiently
+#TODO Replace WRONG_NUMBER with the right one to solve the maze
+#HINT: Look how many times you used the directions in Solution1
+#TODO You have to Write the last For statement yourself
 def solution2():
-    bas()
-    for i in range(4):
-        droite()
-    for i in range(2):
-        bas()
-        
-#TODO: utilier une boucle while
-row = 0
-col = 0
-def solutionAI():
-    while row == 7 and col == 7:
-        if col + 1 < 8 and board[row][col + 1] == 0:
-            droite()
-        elif col - 1 > 0 and board[row][col - 1] == 0:
-            gauche()
-        elif row + 1 < 8 and board[row + 1][col] == 0:
-            bas()
-        elif row - 1 > 0 and board[row - 1][col] == 0:
-            haut()
+    down()
+    for i in range(WRONG_NUMBER):
+        right()
+    for i in range(WRONG_NUMBER):
+        down()
+    for i in range(WRONG_NUMBER):
+        left()
+    for i in range(WRONG_NUMBER):
+        down()
+    #Write the last FOR statement Manually
 
-        
+
     
     
 
@@ -117,7 +105,6 @@ def main():
     updateview(WIN)
 
     while run:
-        clock.tick(FPS)
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
@@ -127,7 +114,7 @@ def main():
             time.sleep(1)
 
             if run:
-                solutionAI()
+                solution2()
                 run = False
                 quit()
         
