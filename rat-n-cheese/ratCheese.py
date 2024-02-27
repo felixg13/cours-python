@@ -28,6 +28,7 @@ def main():
     pygame.display.set_caption('RATnCHEESE')
     font = pygame.font.Font(None, 36)
 
+
     x,y = 400,400
     cheeseX, cheeseY = random.randint(0, WIDTH), random.randint(0, HEIGHT)
     move_left = False
@@ -37,17 +38,49 @@ def main():
     score = 0
 
     run = True
+
     while run:
         clock.tick(FPS)
 
         window.fill(WHITE)
+        pygame.draw.circle(window, GRAY, (x,y), PLAYER_RADIUS)
+        pygame.draw.circle(window, YELLOW, (cheeseX,cheeseY), CHEESE_RADIUS)
+
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
                 run = False
                 quit()
 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    move_right = True
+                if event.key == pygame.K_LEFT:
+                    move_left = True
+                if event.key == pygame.K_UP:
+                    move_up = True
+                if event.key == pygame.K_DOWN:
+                    move_down = True
+                
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    move_right = False
+                if event.key == pygame.K_LEFT:
+                    move_left = False
+                if event.key == pygame.K_UP:
+                    move_up = False
+                if event.key == pygame.K_DOWN:
+                    move_down = False
         
+        if move_right:
+            x += 5
+        if move_left:
+            x -= 5
+        if move_up:
+            y -= 5
+        if move_down:
+            y += 5
+
         pygame.display.update()
     pygame.quit()
     

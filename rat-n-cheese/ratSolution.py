@@ -2,8 +2,11 @@ import pygame
 import random
 
 WIDTH, HEIGHT = 800, 800
-PLAYER_RADIUS = 20
-CHEESE_RADIUS = 10
+PLAYER_RADIUS = 40
+RAT_WIDTH = PLAYER_RADIUS * 2
+CHEESE_RADIUS = 20
+CHEESE_WIDTH = CHEESE_RADIUS * 2
+CHEESE_HEIGHT = CHEESE_RADIUS * 2
 
 
 # rgb
@@ -29,6 +32,18 @@ def main():
     pygame.display.set_caption('RATnCHEESE')
     font = pygame.font.Font(None, 36)
 
+    bg = pygame.transform.scale(pygame.image.load("rat-n-cheese/background.png"), (WIDTH, HEIGHT))
+    cheese = pygame.transform.scale(pygame.image.load("rat-n-cheese/cheese.png"), (CHEESE_WIDTH,CHEESE_HEIGHT))
+
+    cheese = pygame.transform.scale(pygame.image.load("rat-n-cheese/cheese.png"), (CHEESE_WIDTH,CHEESE_HEIGHT))
+    cheese_rect = cheese.get_rect()
+
+    rat = pygame.transform.scale(pygame.image.load("rat-n-cheese/rat.png"), (RAT_WIDTH,RAT_WIDTH))
+    rat_rect = rat.get_rect()
+
+
+
+
     x,y = 400,400
     cheeseX, cheeseY = random.randint(0, WIDTH), random.randint(0, HEIGHT)
     move_left = False
@@ -41,13 +56,23 @@ def main():
     while run:
         clock.tick(FPS)
 
-        window.fill(WHITE)
-        pygame.draw.circle(window, GRAY, (x, y), PLAYER_RADIUS)
-        pygame.draw.circle(window, YELLOW, (cheeseX, cheeseY), CHEESE_RADIUS)
+        #window.fill(WHITE)
+        window.blit(bg, (0,0))
+        #pygame.draw.circle(window, GRAY, (x, y), PLAYER_RADIUS)
+        #pygame.draw.circle(window, YELLOW, (cheeseX, cheeseY), CHEESE_RADIUS)
+        #pygame.draw.rect(window, BLACK, rat_rect)
+        #pygame.draw.rect(window, BLACK, cheese_rect)
+
+        cheese_rect.center = (cheeseX,cheeseY)
+        window.blit(cheese, cheese_rect)
+
+        rat_rect.center = (x,y)
+        window.blit(rat, rat_rect)
+
         text = font.render("Score: " + str(score), True, BLACK)
         window.blit(text, (10, 10))
-        for event in pygame.event.get():
 
+        for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 quit()
